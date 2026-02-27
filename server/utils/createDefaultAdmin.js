@@ -2,26 +2,35 @@ const User = require("../models/User");
 
 const createDefaultAdmin = async () => {
     try {
-        const existingAdmin = await User.findOne({ role: "admin" });
-
-        if (existingAdmin) {
-            console.log("ℹ️  Admin already exists — skipping creation.");
+        // 1. Check if ANY admin already exists
+        const adminExists = await User.findOne({ role: "admin" });
+        if (adminExists) {
+            console.log("✅ Default super admin already exists. Skipping creation.");
             return;
         }
 
-        // Pass the plain-text password — the User model's pre-save
-        // hook (bcrypt, salt 10) handles hashing automatically.
-        await User.create({
-            name: process.env.DEFAULT_ADMIN_NAME,
-            email: process.env.DEFAULT_ADMIN_EMAIL,
-            password: process.env.DEFAULT_ADMIN_PASSWORD,
-            role: "admin",
-            isVerified: true,
-        });
+        // 2. Define super admin details
+        // Note: Password hashing is handled automatically by the User schema's pre('save') hook
+        // Verification is also set to 'approved' and 'isVerified: true' automatically by the pre('save') hook for admins
+        const adminData = {
+            name: "Super Admin",
+            email: "admin@alumnisphere.com",
+            password: "Admin@123", // Will be hashed by bcryptjs in User.js pre-save middleware
+            role: "admin"
+        };
 
-        console.log(`✅ Default admin created: ${process.env.DEFAULT_ADMIN_EMAIL}`);
+        // 3. Create the admin user
+        const newAdmin = new User(adminData);
+        await newAdmin.save();
+
+        console.log("🚀 Default super admin created successfully!");
+        console.log(`✉️  Email: ${adminData.email}`);
+        console.log("🔑 Password: [Provided securely]");
+
     } catch (error) {
-        console.error(`❌ Failed to create default admin: ${error.message}`);
+        // 4. Safely catch errors without crashing the server
+        console.error("❌ Failed to create default super admin:");
+        console.error(error.message);
     }
 };
 
