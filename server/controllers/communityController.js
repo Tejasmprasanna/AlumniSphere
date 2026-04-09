@@ -1,21 +1,34 @@
 const CommunityPost = require("../models/CommunityPost");
 const CommunityComment = require("../models/CommunityComment");
 
+/** One-time shape fix: legacy posts stored author instead of user */
+async function migrateCommunityPostAuthorToUser() {
+    try {
+        await CommunityPost.collection.updateMany(
+            { author: { $exists: true }, user: { $exists: false } },
+            [{ $set: { user: "$author" } }, { $unset: ["author"] }]
+        );
+    } catch {
+        // ignore if DB does not support pipeline updates or collection missing
+    }
+}
+
 // @desc    Get all community posts with comments
 // @route   GET /api/community
 // @access  Public (or authenticated depending on setup - prompt said "shared discussion feed accessible by Students, Alumni, Admin")
 exports.getPosts = async (req, res, next) => {
     try {
+        await migrateCommunityPostAuthorToUser();
+
         const posts = await CommunityPost.find()
-            .populate("author", "name email role")
+            .populate("user", "name email role")
             .sort({ createdAt: -1 })
             .lean();
 
         // Fetch comments for these posts
         const postIds = posts.map(p => p._id);
         const comments = await CommunityComment.find({ post: { $in: postIds } })
-            .populate("user", "name email role profilePhoto")
-            .populate("author", "name email role profilePhoto")
+            .populate("user", "name role")
             .sort({ createdAt: 1 })
             .lean();
 
@@ -45,12 +58,12 @@ exports.createPost = async (req, res, next) => {
         }
 
         const post = await CommunityPost.create({
-            author: req.user._id,
+            user: req.user._id,
             content: content.trim(),
             category: category || "general"
         });
 
-        const populatedPost = await post.populate("author", "name email role");
+        const populatedPost = await post.populate("user", "name email role");
 
         res.status(201).json({ success: true, message: "Post created successfully", post: populatedPost });
     } catch (error) {
@@ -105,11 +118,11 @@ exports.addComment = async (req, res, next) => {
 
         const comment = await CommunityComment.create({
             post: post._id,
-            user: req.user.id,
+            user: req.user._id,
             content: content.trim()
         });
 
-        const populatedComment = await comment.populate("user", "name email role profilePhoto");
+        const populatedComment = await comment.populate("user", "name role");
 
         res.status(201).json({ success: true, message: "Comment added successfully", comment: populatedComment });
     } catch (error) {

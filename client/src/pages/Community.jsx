@@ -72,7 +72,6 @@ export default function Community() {
 
         try {
             const res = await API.post(`/community/${postId}/comment`, { content });
-            console.log("Community comment payload:", res.data.comment);
             setPosts(posts.map(post => {
                 if (post._id === postId) {
                     return { ...post, comments: [...post.comments, res.data.comment] };
@@ -117,8 +116,9 @@ export default function Community() {
     };
 
     const filteredPosts = posts.filter(post => {
+        const authorName = (post.user || post.author)?.name || "";
         const matchesSearch = post.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            post.author?.name.toLowerCase().includes(searchTerm.toLowerCase());
+            authorName.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesCategory = filterCategory === "all" || post.category === filterCategory;
         return matchesSearch && matchesCategory;
     });
@@ -206,7 +206,10 @@ export default function Community() {
             ) : (
                 <div className="mx-auto flex max-w-5xl flex-col gap-5">
                     {filteredPosts.map(post => {
-                        const isLiked = post.likes.includes(user?._id);
+                        const isLiked = post.likes.some(
+                            id => id?.toString?.() === user?._id?.toString?.()
+                        );
+                        const postAuthor = post.user || post.author;
 
                         return (
                             <motion.div
@@ -221,13 +224,13 @@ export default function Community() {
                                 <div className="mb-4 flex items-start justify-between gap-4">
                                     <div className="flex items-center gap-4">
                                         <div className="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/30 bg-cyan-400/15 text-lg font-bold text-cyan-300">
-                                            {post.author?.name?.[0] || "?"}
+                                            {postAuthor?.name?.[0] || "?"}
                                         </div>
                                         <div>
                                             <h4 className="m-0 text-base leading-tight font-semibold text-gray-200">
-                                                {post.author?.name || "Unknown User"}
-                                                <span className={`ml-2 px-2 py-1 text-xs rounded-full ${getRoleBadgeClasses(post.author?.role)}`}>
-                                                    {post.author?.role || "student"}
+                                                {postAuthor?.name || "Unknown User"}
+                                                <span className={`ml-2 px-2 py-1 text-xs rounded-full ${getRoleBadgeClasses(postAuthor?.role)}`}>
+                                                    {postAuthor?.role || "student"}
                                                 </span>
                                             </h4>
                                             <span className="text-xs text-gray-400">
@@ -304,38 +307,36 @@ export default function Community() {
 
                                         {/* Comment List */}
                                         <div className="flex flex-col gap-4">
-                                            {post.comments?.map(comment => (
+                                            {post.comments?.map(comment => {
+                                                const commentAuthor = comment.user;
+                                                const commentName = commentAuthor?.name || "Unknown";
+                                                const commentRole = commentAuthor?.role || "student";
+                                                return (
                                                 <div key={comment._id} className="flex gap-3 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl">
-                                                    {(() => {
-                                                        const commentUser = comment?.user || comment?.author || {};
-                                                        return (
-                                                            <>
-                                                                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-cyan-400/20 bg-white/5 text-sm font-bold text-gray-300">
-                                                                    {commentUser?.name?.[0] || "?"}
-                                                                </div>
-                                                                <div className="flex-1">
-                                                                    <div className="mb-1 flex items-center justify-between gap-3">
-                                                                        <div className="flex items-center gap-2">
-                                                                            <span className="text-sm font-semibold text-gray-200">
-                                                                                {commentUser?.name || "Anonymous"}
-                                                                            </span>
-                                                                            <span className={`px-2 py-1 text-xs rounded-full ${getRoleBadgeClasses(comment?.user?.role)}`}>
-                                                                                {comment?.user?.role || "student"}
-                                                                            </span>
-                                                                        </div>
-                                                                        <span className="text-xs text-gray-400">
-                                                                {new Date(comment.createdAt).toLocaleDateString([], { month: "short", day: "numeric" })}
-                                                                        </span>
-                                                                    </div>
-                                                                    <div className="text-sm leading-relaxed text-gray-300">
-                                                                        {comment.content}
-                                                                    </div>
-                                                        </div>
-                                                                </>
-                                                            );
-                                                        })()}
+                                                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-cyan-400/20 bg-white/5 text-sm font-bold text-gray-300">
+                                                        {commentName[0] || "?"}
                                                     </div>
-                                                ))}
+                                                    <div className="flex-1">
+                                                        <div className="mb-1 flex items-center justify-between gap-3">
+                                                            <div className="flex items-center gap-2">
+                                                                <span className="text-sm font-semibold text-gray-200">
+                                                                    {commentName}
+                                                                </span>
+                                                                <span className={`px-2 py-1 text-xs rounded-full ${getRoleBadgeClasses(commentRole)}`}>
+                                                                    {commentRole}
+                                                                </span>
+                                                            </div>
+                                                            <span className="text-xs text-gray-400">
+                                                                {new Date(comment.createdAt).toLocaleDateString([], { month: "short", day: "numeric" })}
+                                                            </span>
+                                                        </div>
+                                                        <div className="text-sm leading-relaxed text-gray-300">
+                                                            {comment.content}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 )}

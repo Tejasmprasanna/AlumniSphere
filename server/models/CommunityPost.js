@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const communityPostSchema = new mongoose.Schema(
     {
-        author: {
+        user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
             required: true,
