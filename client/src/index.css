@@ -3,13 +3,8 @@
 /* Global base styles */
 body {
   font-family: 'Inter', system-ui, sans-serif;
-<<<<<<< HEAD
   background-color: #020617;
   color: #e5e7eb;
-=======
-  background-color: #0f172a;
-  color: #f1f5f9;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
@@ -20,11 +15,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-<<<<<<< HEAD
   background: #0a0a0f;
-=======
-  background: #0f172a;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 }
 
 ::-webkit-scrollbar-thumb {
@@ -33,7 +24,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-<<<<<<< HEAD
   background: #22d3ee;
 }
 
@@ -53,49 +43,24 @@ body {
 .glass-card:hover {
   box-shadow: 0 0 60px rgba(34, 211, 238, 0.3);
   transform: scale(1.02);
-=======
-  background: #6366f1;
-}
-
-/* Glass card */
-.glass {
-  background: rgba(30, 41, 59, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(99, 102, 241, 0.18);
-  border-radius: 1rem;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 }
 
 /* Input styles */
 .input-field {
   width: 100%;
-<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   padding: 0.625rem 1rem;
   color: #e5e7eb;
-=======
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  border-radius: 0.5rem;
-  padding: 0.625rem 0.875rem;
-  color: #f1f5f9;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   font-size: 0.875rem;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input-field:focus {
-<<<<<<< HEAD
   border-color: rgba(255, 255, 255, 0.25);
   box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.4);
-=======
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 }
 
 .input-field::placeholder {
@@ -104,7 +69,6 @@ body {
 
 /* Buttons */
 .btn-primary {
-<<<<<<< HEAD
   background: linear-gradient(to right, #2dd4bf, #22d3ee);
   color: #020617;
   border: none;
@@ -123,26 +87,6 @@ body {
 .btn-primary:hover {
   box-shadow: 0 0 40px rgba(34, 211, 238, 0.8);
   transform: scale(1.02);
-=======
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.625rem 1.25rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, #4f46e5, #4338ca);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 }
 
 .btn-primary:active {
@@ -150,30 +94,20 @@ body {
 }
 
 .btn-danger {
-<<<<<<< HEAD
   background: linear-gradient(to right, #2dd4bf, #22d3ee);
   color: #020617;
-=======
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: white;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   border: none;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   font-weight: 600;
   font-size: 0.8rem;
   cursor: pointer;
-<<<<<<< HEAD
   transition: all 0.3s;
-=======
-  transition: all 0.2s;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
 }
 
-<<<<<<< HEAD
 .btn-danger,
 .btn-success,
 .btn-outline {
@@ -188,34 +122,19 @@ body {
 .btn-success {
   background: linear-gradient(to right, #2dd4bf, #22d3ee);
   color: #020617;
-=======
-.btn-danger:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.btn-success {
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   border: none;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   font-weight: 600;
   font-size: 0.8rem;
   cursor: pointer;
-<<<<<<< HEAD
   transition: all 0.3s;
-=======
-  transition: all 0.2s;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
 }
 
 .btn-success:hover {
-<<<<<<< HEAD
   box-shadow: 0 0 40px rgba(34, 211, 238, 0.8);
   transform: scale(1.02);
 }
@@ -224,39 +143,20 @@ body {
   background: linear-gradient(to right, #2dd4bf, #22d3ee);
   color: #020617;
   border: none;
-=======
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.btn-outline {
-  background: transparent;
-  color: #6366f1;
-  border: 1px solid rgba(99, 102, 241, 0.5);
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   font-weight: 600;
   font-size: 0.8rem;
   cursor: pointer;
-<<<<<<< HEAD
   transition: all 0.3s;
-=======
-  transition: all 0.2s;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
 }
 
 .btn-outline:hover {
-<<<<<<< HEAD
   box-shadow: 0 0 40px rgba(34, 211, 238, 0.8);
   transform: scale(1.02);
-=======
-  background: rgba(99, 102, 241, 0.1);
-  border-color: #6366f1;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 }
 
 /* Badges */
@@ -386,7 +286,6 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-<<<<<<< HEAD
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-size: 0.875rem;
@@ -407,46 +306,16 @@ body {
   background: rgba(34, 211, 238, 0.1);
   color: #67e8f9;
   border-left: 4px solid #22d3ee;
-=======
-  padding: 0.65rem 0.875rem;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #94a3b8;
-  transition: all 0.2s;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.sidebar-link:hover {
-  background: rgba(99, 102, 241, 0.1);
-  color: #a5b4fc;
-}
-
-.sidebar-link.active {
-  background: rgba(99, 102, 241, 0.18);
-  color: #818cf8;
-  border-right: 2px solid #6366f1;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 }
 
 /* Card hover */
 .card-hover {
-<<<<<<< HEAD
   transition: all 0.3s;
 }
 
 .card-hover:hover {
   transform: scale(1.02);
   box-shadow: 0 0 25px rgba(34, 211, 238, 0.3);
-=======
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 }
 
 /* Section title */
@@ -460,7 +329,6 @@ body {
 /* Divider */
 .divider {
   height: 1px;
-<<<<<<< HEAD
   background: rgba(34, 211, 238, 0.2);
   margin: 1rem 0;
 }
@@ -505,8 +373,4 @@ body {
 .role-badge.admin {
   background: rgba(248, 113, 113, 0.2);
   color: #fca5a5;
-=======
-  background: rgba(99, 102, 241, 0.15);
-  margin: 1rem 0;
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 }

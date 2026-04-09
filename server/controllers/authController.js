@@ -76,25 +76,30 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
+        const normalizedEmail = (email || "").toLowerCase().trim();
+        console.log(`[AUTH] Login attempt: ${normalizedEmail || "missing-email"}`);
 
         if (!email || !password) {
             return res.status(400).json({ success: false, message: "Please provide email and password" });
         }
 
         // Normalise email to lowercase before lookup
-        const user = await User.findOne({ email: email.toLowerCase().trim() }).select("+password");
+        const user = await User.findOne({ email: normalizedEmail }).select("+password");
         if (!user) {
-            return res.status(401).json({ success: false, message: "Invalid credentials" });
+            console.log(`[AUTH] Login failed: user not found (${normalizedEmail})`);
+            return res.status(401).json({ success: false, message: "Invalid email or password" });
         }
 
         // Compare plain-text password against the stored bcrypt hash
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(401).json({ success: false, message: "Invalid credentials" });
+            console.log(`[AUTH] Login failed: wrong password (${normalizedEmail})`);
+            return res.status(401).json({ success: false, message: "Invalid email or password" });
         }
 
         // Only admins bypass the approval gate
         if (user.role !== "admin" && user.verificationStatus !== "approved") {
+            console.log(`[AUTH] Login blocked: pending approval (${normalizedEmail})`);
             return res.status(403).json({
                 success: false,
                 message: "Your account is pending admin approval.",
@@ -102,6 +107,7 @@ const login = async (req, res) => {
         }
 
         const token = generateToken(user._id);
+        console.log(`[AUTH] Login success: ${normalizedEmail} (${user.role})`);
 
         res.status(200).json({
             success: true,
@@ -121,6 +127,7 @@ const login = async (req, res) => {
             },
         });
     } catch (error) {
+        console.error("[AUTH] Login error:", error.message);
         res.status(500).json({ success: false, message: error.message });
     }
 };

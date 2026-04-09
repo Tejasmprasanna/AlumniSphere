@@ -40,7 +40,6 @@ export default function Sidebar() {
 
     return (
         <>
-<<<<<<< HEAD
             <aside className="page-shell sticky top-0 flex h-screen w-[230px] min-w-[230px] flex-col border-r border-white/10 bg-white/5 backdrop-blur-xl">
                 {/* Logo */}
                 <div className="border-b border-cyan-400/15 px-5 py-5">
@@ -53,30 +52,6 @@ export default function Sidebar() {
                                 Alumni<span className="text-cyan-300">Sphere</span>
                             </div>
                             <div className="text-[0.65rem] uppercase tracking-[0.08em] text-gray-400">
-=======
-            <aside style={{
-                width: "230px", minWidth: "230px",
-                background: "rgba(15,23,42,0.95)",
-                borderRight: "1px solid rgba(99,102,241,0.15)",
-                display: "flex", flexDirection: "column",
-                height: "100vh", position: "sticky", top: 0,
-                backdropFilter: "blur(20px)"
-            }}>
-                {/* Logo */}
-                <div style={{ padding: "1.5rem 1.2rem 1rem", borderBottom: "1px solid rgba(99,102,241,0.15)" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                        <div style={{
-                            background: "linear-gradient(135deg,#6366f1,#4f46e5)",
-                            borderRadius: "0.5rem", padding: "0.4rem", display: "flex"
-                        }}>
-                            <Zap size={18} color="white" />
-                        </div>
-                        <div>
-                            <div style={{ fontSize: "1rem", fontWeight: "800", color: "#f1f5f9", lineHeight: 1.1 }}>
-                                Alumni<span style={{ color: "#6366f1" }}>Sphere</span>
-                            </div>
-                            <div style={{ fontSize: "0.65rem", color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em" }}>
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                                 {user?.role || "Platform"}
                             </div>
                         </div>
@@ -84,24 +59,15 @@ export default function Sidebar() {
                 </div>
 
                 {/* Navigation */}
-<<<<<<< HEAD
                 <nav className="flex-1 overflow-y-auto p-3">
                     {links.map(({ to, icon: IconComponent, label }) => (
-=======
-                <nav style={{ flex: 1, padding: "0.75rem 0.75rem", overflowY: "auto" }}>
-                    {links.map(({ to, icon: Icon, label }) => (
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                         <NavLink
                             key={to}
                             to={to}
                             className={({ isActive }) => `sidebar-link${isActive ? " active" : ""}`}
                             style={{ marginBottom: "0.2rem", display: "flex" }}
                         >
-<<<<<<< HEAD
                             <IconComponent size={16} className="icon-glow" />
-=======
-                            <Icon size={16} />
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                             <span>{label}</span>
                         </NavLink>
                     ))}

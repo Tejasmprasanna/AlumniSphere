@@ -58,7 +58,6 @@ const getVerifiedAlumni = async (req, res) => {
     }
 };
 
-<<<<<<< HEAD
 // @desc    Get recommended alumni for current student
 // @route   GET /api/users/recommended
 // @access  Private/Student
@@ -99,6 +98,3 @@ const getRecommendedAlumni = async (req, res) => {
 };
 
 module.exports = { getAllUsers, getUserById, updateProfile, getVerifiedAlumni, getRecommendedAlumni };
-=======
-module.exports = { getAllUsers, getUserById, updateProfile, getVerifiedAlumni };
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1

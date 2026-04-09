@@ -7,7 +7,6 @@ const communityCommentSchema = new mongoose.Schema(
             ref: "CommunityPost",
             required: true,
         },
-<<<<<<< HEAD
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
@@ -18,12 +17,6 @@ const communityCommentSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
             required: false,
-=======
-        author: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-            required: true,
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
         },
         content: {
             type: String,

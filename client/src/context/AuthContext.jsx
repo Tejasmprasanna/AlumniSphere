@@ -33,8 +33,10 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (data) => {
         const res = await API.post("/auth/register", data);
-        localStorage.setItem("alumniToken", res.data.token);
-        setUser(res.data.user);
+        if (res.data.token) {
+            localStorage.setItem("alumniToken", res.data.token);
+        }
+        setUser(res.data.user || null);
         return res.data.user;
     };
 

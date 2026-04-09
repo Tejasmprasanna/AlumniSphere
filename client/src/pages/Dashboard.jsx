@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import StatsCard from "../components/StatsCard";
-<<<<<<< HEAD
 import RecommendedAlumni from "../components/RecommendedAlumni";
-=======
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 import API from "../api/axios";
 import {
     Users, Award, Briefcase, MessageSquare,
@@ -15,10 +12,7 @@ export default function Dashboard() {
     const { user } = useAuth();
     const [stats, setStats] = useState(null);
     const [opportunities, setOpportunities] = useState([]);
-<<<<<<< HEAD
     const [recommendedAlumni, setRecommendedAlumni] = useState([]);
-=======
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -33,13 +27,10 @@ export default function Dashboard() {
                     const statsRes = await API.get("/admin/stats");
                     setStats(statsRes.data.stats);
                 }
-<<<<<<< HEAD
                 if (user?.role === "student") {
                     const recRes = await API.get("/users/recommended");
                     setRecommendedAlumni(recRes.data.alumni || []);
                 }
-=======
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
             } catch (e) { /* ignore */ }
             finally { setLoading(false); }
         };
@@ -54,11 +45,7 @@ export default function Dashboard() {
     };
 
     return (
-<<<<<<< HEAD
         <div className="fade-in min-h-screen bg-[#020617] p-6 text-gray-200">
-=======
-        <div className="fade-in" style={{ padding: "1.75rem" }}>
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
             {/* Welcome banner */}
             <div className="glass" style={{
                 padding: "1.75rem 2rem", marginBottom: "1.75rem",
@@ -72,11 +59,7 @@ export default function Dashboard() {
                 <p style={{ fontSize: "0.875rem", color: "#818cf8", fontWeight: "500", marginBottom: "0.3rem" }}>
                     {timeOfDay()}, 👋
                 </p>
-<<<<<<< HEAD
                 <h2 className="mb-2 bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-5xl font-bold text-transparent">
-=======
-                <h2 style={{ fontSize: "1.6rem", fontWeight: "800", color: "#f1f5f9", marginBottom: "0.5rem" }}>
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                     {user?.name}
                 </h2>
                 <p style={{ fontSize: "0.875rem", color: "#64748b" }}>
@@ -186,11 +169,8 @@ export default function Dashboard() {
                 </div>
             )}
 
-<<<<<<< HEAD
             {user?.role === "student" && <RecommendedAlumni alumni={recommendedAlumni} />}
 
-=======
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
             {/* Recent Opportunities */}
             <div className="divider" />
             <h3 style={{

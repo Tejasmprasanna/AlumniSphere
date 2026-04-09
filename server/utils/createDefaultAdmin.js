@@ -15,7 +15,7 @@ const createDefaultAdmin = async () => {
         const adminData = {
             name: "Super Admin",
             email: "admin@alumnisphere.com",
-            password: "Admin@123", // Will be hashed by bcryptjs in User.js pre-save middleware
+            password: "admin123", // Will be hashed by bcryptjs in User.js pre-save middleware
             role: "admin"
         };
 

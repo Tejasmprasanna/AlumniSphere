@@ -3,7 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const API = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL,
+    baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api",
 });
 
 // Attach JWT token automatically to every request
@@ -23,12 +23,18 @@ API.interceptors.response.use(
         const status = error.response?.status;
 
         if (status === 401 || status === 403) {
+            // Show backend auth error clearly on login/register pages
+            const path = window.location.pathname;
+            if (path === "/login" || path === "/register") {
+                toast.error(message);
+                return Promise.reject(error);
+            }
+
             // Handle unauthorized access by clearing token and redirecting
             toast.error("Session expired or access denied. Please log in again.");
             localStorage.removeItem("alumniToken");
 
             // Only redirect if not already on public routes
-            const path = window.location.pathname;
             if (path !== "/login" && path !== "/register" && path !== "/" && !path.startsWith("/public")) {
                 window.location.href = "/login";
             }

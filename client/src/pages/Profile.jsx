@@ -69,14 +69,9 @@ export default function Profile() {
     );
 
     return (
-<<<<<<< HEAD
         <div className="fade-in min-h-screen bg-[#020617] p-6 text-gray-200">
             <Toast msg={toast.msg} type={toast.type} />
             <div className="mx-auto max-w-[700px]">
-=======
-        <div className="fade-in" style={{ padding: "1.75rem", maxWidth: "700px" }}>
-            <Toast msg={toast.msg} type={toast.type} />
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 
             {/* Profile header */}
             <div className="glass" style={{ padding: "1.75rem", marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: "1.25rem" }}>
@@ -89,11 +84,7 @@ export default function Profile() {
                     {user?.name?.[0]?.toUpperCase()}
                 </div>
                 <div>
-<<<<<<< HEAD
                     <h2 className="bg-gradient-to-r from-white to-cyan-300 bg-clip-text text-5xl font-bold text-transparent">{user?.name}</h2>
-=======
-                    <h2 style={{ fontWeight: "800", fontSize: "1.2rem", color: "#f1f5f9" }}>{user?.name}</h2>
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                     <p style={{ fontSize: "0.8rem", color: "#64748b", marginBottom: "0.4rem" }}>{user?.email}</p>
                     <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
                         <span className={`badge ${user?.role === "alumni" ? "badge-mentorship" : "badge-job"}`} style={{ textTransform: "capitalize" }}>
@@ -130,10 +121,7 @@ export default function Profile() {
                     </button>
                 </form>
             </div>
-<<<<<<< HEAD
             </div>
-=======
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
         </div>
     );
 }

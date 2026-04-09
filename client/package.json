@@ -11,10 +11,7 @@
   },
   "dependencies": {
     "axios": "^1.13.5",
-<<<<<<< HEAD
     "framer-motion": "^12.38.0",
-=======
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
     "lucide-react": "^0.575.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
