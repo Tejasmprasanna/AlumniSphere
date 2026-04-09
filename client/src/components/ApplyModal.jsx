@@ -80,6 +80,7 @@ export default function ApplyModal({ opportunity, isOpen, onClose, onSuccess }) 
         <div style={{
             position: "fixed", inset: 0, zIndex: 100,
             display: "flex", alignItems: "center", justifyContent: "center",
+<<<<<<< HEAD
             background: "rgba(2,6,23,0.75)", backdropFilter: "blur(8px)",
             padding: "1rem"
         }}>
@@ -102,6 +103,30 @@ export default function ApplyModal({ opportunity, isOpen, onClose, onSuccess }) 
                     </div>
                     <button onClick={onClose} disabled={loading || success} style={{
                         background: "rgba(255,255,255,0.05)", border: "1px solid rgba(34,211,238,0.2)", color: "#9ca3af", cursor: "pointer",
+=======
+            background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)",
+            padding: "1rem"
+        }}>
+            <div style={{
+                background: "#0f172a", border: "1px solid rgba(99,102,241,0.2)",
+                borderRadius: "1rem", width: "100%", maxWidth: "600px",
+                maxHeight: "90vh", display: "flex", flexDirection: "column",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.5)", animation: "fadeInUp 0.3s ease-out"
+            }}>
+                {/* Header */}
+                <div style={{
+                    padding: "1.25rem 1.5rem", borderBottom: "1px solid rgba(255,255,255,0.05)",
+                    display: "flex", justifyContent: "space-between", alignItems: "center"
+                }}>
+                    <div>
+                        <h2 style={{ fontSize: "1.25rem", fontWeight: "700", color: "#f8fafc", margin: 0 }}>Apply to {opportunity.title}</h2>
+                        {opportunity.postedBy?.organization && (
+                            <p style={{ margin: "0.25rem 0 0 0", fontSize: "0.85rem", color: "#94a3b8" }}>{opportunity.postedBy.organization}</p>
+                        )}
+                    </div>
+                    <button onClick={onClose} disabled={loading || success} style={{
+                        background: "rgba(30,41,59,0.5)", border: "none", color: "#94a3b8", cursor: "pointer",
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                         padding: "0.5rem", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center"
                     }}>
                         <X size={18} />
@@ -235,19 +260,33 @@ export default function ApplyModal({ opportunity, isOpen, onClose, onSuccess }) 
                 {/* Footer Controls */}
                 {!success && (
                     <div style={{
+<<<<<<< HEAD
                         padding: "1rem 1.5rem", borderTop: "1px solid rgba(34,211,238,0.15)",
                         display: "flex", justifyContent: "flex-end", gap: "1rem", background: "rgba(255,255,255,0.02)"
                     }}>
                         <button onClick={onClose} disabled={loading} style={{
                             padding: "0.6rem 1.25rem", background: "transparent", color: "#cbd5e1",
                             border: "1px solid rgba(34,211,238,0.2)", borderRadius: "0.75rem",
+=======
+                        padding: "1rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.05)",
+                        display: "flex", justifyContent: "flex-end", gap: "1rem", background: "rgba(15,23,42,0.5)"
+                    }}>
+                        <button onClick={onClose} disabled={loading} style={{
+                            padding: "0.6rem 1.25rem", background: "transparent", color: "#cbd5e1",
+                            border: "1px solid rgba(255,255,255,0.2)", borderRadius: "0.5rem",
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                             fontSize: "0.9rem", fontWeight: 600, cursor: "pointer", transition: "all 0.2s"
                         }}>
                             Cancel
                         </button>
                         <button onClick={handleSubmit} disabled={loading} style={{
+<<<<<<< HEAD
                             padding: "0.6rem 1.25rem", background: "linear-gradient(to right, #2dd4bf, #22d3ee)", color: "black",
                             border: "none", borderRadius: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem",
+=======
+                            padding: "0.6rem 1.25rem", background: "#6366f1", color: "white",
+                            border: "none", borderRadius: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem",
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                             fontSize: "0.9rem", fontWeight: 600, cursor: "pointer", opacity: loading ? 0.7 : 1, transition: "background 0.2s"
                         }}>
                             {loading ? (

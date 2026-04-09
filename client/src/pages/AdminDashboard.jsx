@@ -4,7 +4,11 @@ import API from "../api/axios";
 import {
     Users, Award, GraduationCap, Briefcase, MessageSquare,
     CheckCircle, Clock, TrendingUp, Shield, Database,
+<<<<<<< HEAD
     Zap, Server, AlertCircle, BarChart as ChartIcon
+=======
+    Zap, Server, Activity, AlertCircle, BarChart as ChartIcon
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 } from "lucide-react";
 import {
     LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell,
@@ -160,6 +164,7 @@ export default function AdminDashboard() {
             <style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}`}</style>
 
             {/* ── Hero banner ─────────────────────────────── */}
+<<<<<<< HEAD
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 shadow-[0_0_60px_rgba(34,211,238,0.15)] backdrop-blur-2xl transition-all duration-500 hover:shadow-[0_0_80px_rgba(34,211,238,0.25)]">
                 <div className="absolute top-[-100px] left-[-100px] h-[300px] w-[300px] rounded-full bg-teal-500/20 blur-[120px]"></div>
                 <div className="absolute right-[-100px] bottom-[-100px] h-[300px] w-[300px] rounded-full bg-cyan-500/20 blur-[120px]"></div>
@@ -180,6 +185,43 @@ export default function AdminDashboard() {
                         </button>
                     )}
                 </div>
+=======
+            <div className="glass" style={{
+                padding: "1.75rem 2rem", marginBottom: "2rem",
+                background: "linear-gradient(135deg,rgba(99,102,241,0.22),rgba(168,85,247,0.14),rgba(30,41,59,0.55))",
+                position: "relative", overflow: "hidden",
+            }}>
+                <div style={{
+                    position: "absolute", top: -40, right: -40, width: 180, height: 180,
+                    background: "radial-gradient(circle,rgba(99,102,241,0.28),transparent)",
+                    borderRadius: "50%", pointerEvents: "none",
+                }} />
+                <div style={{
+                    position: "absolute", bottom: -30, left: "40%", width: 120, height: 120,
+                    background: "radial-gradient(circle,rgba(168,85,247,0.18),transparent)",
+                    borderRadius: "50%", pointerEvents: "none",
+                }} />
+                <p style={{ fontSize: "0.78rem", color: "#6366f1", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "0.35rem" }}>
+                    Admin Console
+                </p>
+                <h2 style={{ fontSize: "1.55rem", fontWeight: 800, color: "#f1f5f9", marginBottom: "0.3rem" }}>
+                    Welcome back, {user?.name?.split(" ")[0] ?? "Admin"} 👋
+                </h2>
+                <p style={{ fontSize: "0.875rem", color: "#64748b" }}>
+                    Here's a summary of the AlumniSphere platform today.
+                </p>
+                {!loading && stats && (
+                    <button onClick={load} style={{
+                        marginTop: "1rem", background: "rgba(99,102,241,0.18)",
+                        border: "1px solid rgba(99,102,241,0.35)", borderRadius: "0.5rem",
+                        color: "#818cf8", fontSize: "0.78rem", fontWeight: 600,
+                        padding: "0.4rem 0.9rem", cursor: "pointer", display: "inline-flex",
+                        alignItems: "center", gap: "0.35rem", transition: "all .2s",
+                    }}>
+                        <Activity size={13} /> Refresh
+                    </button>
+                )}
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
             </div>
 
             {/* ── Stats grid ────────────────────────────── */}

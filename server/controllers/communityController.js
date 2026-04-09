@@ -14,8 +14,12 @@ exports.getPosts = async (req, res, next) => {
         // Fetch comments for these posts
         const postIds = posts.map(p => p._id);
         const comments = await CommunityComment.find({ post: { $in: postIds } })
+<<<<<<< HEAD
             .populate("user", "name email role profilePhoto")
             .populate("author", "name email role profilePhoto")
+=======
+            .populate("author", "name email role")
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
             .sort({ createdAt: 1 })
             .lean();
 
@@ -105,11 +109,19 @@ exports.addComment = async (req, res, next) => {
 
         const comment = await CommunityComment.create({
             post: post._id,
+<<<<<<< HEAD
             user: req.user.id,
             content: content.trim()
         });
 
         const populatedComment = await comment.populate("user", "name email role profilePhoto");
+=======
+            author: req.user._id,
+            content: content.trim()
+        });
+
+        const populatedComment = await comment.populate("author", "name email role");
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
 
         res.status(201).json({ success: true, message: "Comment added successfully", comment: populatedComment });
     } catch (error) {

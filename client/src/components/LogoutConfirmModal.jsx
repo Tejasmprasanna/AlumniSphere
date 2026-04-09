@@ -10,8 +10,13 @@ export default function LogoutConfirmModal({ isOpen, onClose, onConfirm }) {
             onClick={onClose}
             style={{
                 position: "fixed", inset: 0, zIndex: 1000,
+<<<<<<< HEAD
                 background: "rgba(2,6,23,0.75)",
                 backdropFilter: "blur(8px)",
+=======
+                background: "rgba(0,0,0,0.6)",
+                backdropFilter: "blur(6px)",
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                 display: "flex", alignItems: "center", justifyContent: "center",
                 padding: "1rem",
                 animation: "fadeIn 0.15s ease",
@@ -20,11 +25,22 @@ export default function LogoutConfirmModal({ isOpen, onClose, onConfirm }) {
             {/* Card — stop click propagation so overlay click doesn't close from inside */}
             <div
                 onClick={e => e.stopPropagation()}
+<<<<<<< HEAD
                 className="glass-card transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,211,238,0.3)] hover:scale-[1.02]"
                 style={{
                     padding: "2rem",
                     width: "100%",
                     maxWidth: "380px",
+=======
+                style={{
+                    background: "#0f172a",
+                    border: "1px solid rgba(51,65,85,1)", // border-slate-700
+                    borderRadius: "0.75rem", // xl
+                    padding: "2rem",
+                    width: "100%",
+                    maxWidth: "380px",
+                    boxShadow: "0 10px 25px rgba(0,0,0,0.5)",
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                     animation: "scaleIn 0.18s ease",
                     position: "relative",
                 }}
@@ -35,12 +51,21 @@ export default function LogoutConfirmModal({ isOpen, onClose, onConfirm }) {
                     style={{
                         position: "absolute", top: "1rem", right: "1rem",
                         background: "none", border: "none", cursor: "pointer",
+<<<<<<< HEAD
                         color: "#94a3b8", padding: "0.25rem", borderRadius: "0.375rem",
                         display: "flex", alignItems: "center", justifyContent: "center",
                         transition: "color 0.15s",
                     }}
                     onMouseEnter={e => e.currentTarget.style.color = "#a5f3fc"}
                     onMouseLeave={e => e.currentTarget.style.color = "#94a3b8"}
+=======
+                        color: "#475569", padding: "0.25rem", borderRadius: "0.375rem",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        transition: "color 0.15s",
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.color = "#94a3b8"}
+                    onMouseLeave={e => e.currentTarget.style.color = "#475569"}
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                 >
                     <X size={18} />
                 </button>
@@ -48,8 +73,13 @@ export default function LogoutConfirmModal({ isOpen, onClose, onConfirm }) {
                 {/* Icon */}
                 <div style={{
                     width: "52px", height: "52px", borderRadius: "0.875rem",
+<<<<<<< HEAD
                     background: "rgba(248,113,113,0.12)",
                     border: "1px solid rgba(248,113,113,0.3)",
+=======
+                    background: "rgba(239,68,68,0.12)",
+                    border: "1px solid rgba(239,68,68,0.2)",
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                     display: "flex", alignItems: "center", justifyContent: "center",
                     marginBottom: "1.25rem",
                 }}>
@@ -57,10 +87,17 @@ export default function LogoutConfirmModal({ isOpen, onClose, onConfirm }) {
                 </div>
 
                 {/* Text */}
+<<<<<<< HEAD
                 <h3 style={{ fontWeight: "800", fontSize: "1.1rem", color: "#e5e7eb", marginBottom: "0.5rem" }}>
                     Are you sure you want to log out?
                 </h3>
                 <p style={{ fontSize: "0.875rem", color: "#9ca3af", marginBottom: "1.75rem", lineHeight: 1.6 }}>
+=======
+                <h3 style={{ fontWeight: "800", fontSize: "1.1rem", color: "#f1f5f9", marginBottom: "0.5rem" }}>
+                    Are you sure you want to log out?
+                </h3>
+                <p style={{ fontSize: "0.875rem", color: "#64748b", marginBottom: "1.75rem", lineHeight: 1.6 }}>
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                     You will need to sign in again to access your dashboard.
                 </p>
 
@@ -72,6 +109,7 @@ export default function LogoutConfirmModal({ isOpen, onClose, onConfirm }) {
                         style={{
                             flex: 1, padding: "0.65rem 1rem",
                             borderRadius: "0.5rem",
+<<<<<<< HEAD
                             border: "1px solid rgba(34,211,238,0.2)",
                             background: "transparent",
                             color: "#9ca3af", fontWeight: "600", fontSize: "0.875rem",
@@ -84,6 +122,20 @@ export default function LogoutConfirmModal({ isOpen, onClose, onConfirm }) {
                         onMouseLeave={e => {
                             e.currentTarget.style.background = "transparent";
                             e.currentTarget.style.color = "#9ca3af";
+=======
+                            border: "1px solid rgba(51,65,85,1)",
+                            background: "transparent",
+                            color: "#94a3b8", fontWeight: "600", fontSize: "0.875rem",
+                            cursor: "pointer", transition: "all 0.15s",
+                        }}
+                        onMouseEnter={e => {
+                            e.currentTarget.style.background = "rgba(51,65,85,1)";
+                            e.currentTarget.style.color = "#f1f5f9";
+                        }}
+                        onMouseLeave={e => {
+                            e.currentTarget.style.background = "transparent";
+                            e.currentTarget.style.color = "#94a3b8";
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                         }}
                     >
                         Cancel
@@ -95,13 +147,22 @@ export default function LogoutConfirmModal({ isOpen, onClose, onConfirm }) {
                         style={{
                             flex: 1, padding: "0.65rem 1rem",
                             borderRadius: "0.5rem", border: "none",
+<<<<<<< HEAD
                             background: "linear-gradient(to right, #2dd4bf, #22d3ee)",
+=======
+                            background: "#ef4444",
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                             color: "white", fontWeight: "700", fontSize: "0.875rem",
                             cursor: "pointer", transition: "all 0.15s",
                             display: "flex", alignItems: "center", justifyContent: "center", gap: "0.4rem",
                         }}
+<<<<<<< HEAD
                         onMouseEnter={e => e.currentTarget.style.boxShadow = "0 0 20px rgba(34,211,238,0.6)"}
                         onMouseLeave={e => e.currentTarget.style.boxShadow = "none"}
+=======
+                        onMouseEnter={e => e.currentTarget.style.background = "#dc2626"}
+                        onMouseLeave={e => e.currentTarget.style.background = "#ef4444"}
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
                     >
                         <LogOut size={15} />
                         Logout

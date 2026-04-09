@@ -36,11 +36,19 @@ import AdminApplications from "./pages/AdminApplications";
 // Shared layout (Sidebar + Navbar) for non-admin users
 function AppLayout() {
   return (
+<<<<<<< HEAD
     <div className="relative z-10 flex min-h-screen bg-[#020617] text-gray-200">
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col overflow-x-hidden bg-[#020617] text-gray-200">
         <Navbar />
         <main className="flex-1 overflow-y-auto bg-[#020617]">
+=======
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      <Sidebar />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0, overflowX: "hidden" }}>
+        <Navbar />
+        <main style={{ flex: 1, overflowY: "auto" }}>
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
           <Outlet />
         </main>
       </div>
@@ -50,6 +58,7 @@ function AppLayout() {
 
 export default function App() {
   return (
+<<<<<<< HEAD
     <div className="relative min-h-screen overflow-hidden bg-[#020617] text-white">
       <div className="absolute top-[-200px] left-[-200px] h-[500px] w-[500px] rounded-full bg-teal-500/20 blur-[150px]"></div>
       <div className="absolute right-[-200px] bottom-[-200px] h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[150px]"></div>
@@ -59,6 +68,12 @@ export default function App() {
           <BrowserRouter>
             <Toaster position="top-right" />
             <Routes>
+=======
+    <AuthProvider>
+      <BrowserRouter>
+        <Toaster position="top-right" />
+        <Routes>
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
           {/* ── Public ── */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -108,10 +123,16 @@ export default function App() {
 
           {/* ── Catch-all ── */}
           <Route path="*" element={<Navigate to="/" replace />} />
+<<<<<<< HEAD
             </Routes>
           </BrowserRouter>
         </AuthProvider>
       </div>
     </div>
+=======
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+>>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   );
 }
