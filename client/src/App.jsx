@@ -33,22 +33,14 @@ import AdminSettings from "./pages/AdminSettings";
 import AdminAuditLogs from "./pages/AdminAuditLogs";
 import AdminApplications from "./pages/AdminApplications";
 
-// Shared layout (Sidebar + Navbar) for non-admin users
+// Layout
 function AppLayout() {
   return (
-<<<<<<< HEAD
     <div className="relative z-10 flex min-h-screen bg-[#020617] text-gray-200">
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col overflow-x-hidden bg-[#020617] text-gray-200">
         <Navbar />
         <main className="flex-1 overflow-y-auto bg-[#020617]">
-=======
-    <div style={{ display: "flex", minHeight: "100vh" }}>
-      <Sidebar />
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0, overflowX: "hidden" }}>
-        <Navbar />
-        <main style={{ flex: 1, overflowY: "auto" }}>
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
           <Outlet />
         </main>
       </div>
@@ -58,7 +50,6 @@ function AppLayout() {
 
 export default function App() {
   return (
-<<<<<<< HEAD
     <div className="relative min-h-screen overflow-hidden bg-[#020617] text-white">
       <div className="absolute top-[-200px] left-[-200px] h-[500px] w-[500px] rounded-full bg-teal-500/20 blur-[150px]"></div>
       <div className="absolute right-[-200px] bottom-[-200px] h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[150px]"></div>
@@ -68,71 +59,59 @@ export default function App() {
           <BrowserRouter>
             <Toaster position="top-right" />
             <Routes>
-=======
-    <AuthProvider>
-      <BrowserRouter>
-        <Toaster position="top-right" />
-        <Routes>
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
-          {/* ── Public ── */}
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/public/opportunities" element={<PublicOpportunities />} />
 
-          {/* ── Admin (own layout) ── */}
-          <Route path="/admin" element={
-            <ProtectedRoute allowedRoles={["admin"]}>
-              <AdminLayout />
-            </ProtectedRoute>
-          }>
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="users" element={<AdminUsers />} />
-            <Route path="verify-alumni" element={<VerifyAlumni />} />
-            <Route path="roles" element={<AdminRoles />} />
-            <Route path="opportunities" element={<AdminOpportunities />} />
-            <Route path="referrals" element={<AdminReferrals />} />
-            <Route path="reports" element={<AdminReports />} />
-            <Route path="settings" element={<AdminSettings />} />
-            <Route path="audit-logs" element={<AdminAuditLogs />} />
-            <Route path="applications" element={<AdminApplications />} />
-          </Route>
+              {/* Public */}
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/public/opportunities" element={<PublicOpportunities />} />
 
-          {/* Legacy redirect: /verify-alumni → /admin/verify-alumni */}
-          <Route path="/verify-alumni" element={<Navigate to="/admin/verify-alumni" replace />} />
+              {/* Admin */}
+              <Route path="/admin" element={
+                <ProtectedRoute allowedRoles={["admin"]}>
+                  <AdminLayout />
+                </ProtectedRoute>
+              }>
+                <Route index element={<Navigate to="dashboard" replace />} />
+                <Route path="dashboard" element={<AdminDashboard />} />
+                <Route path="users" element={<AdminUsers />} />
+                <Route path="verify-alumni" element={<VerifyAlumni />} />
+                <Route path="roles" element={<AdminRoles />} />
+                <Route path="opportunities" element={<AdminOpportunities />} />
+                <Route path="referrals" element={<AdminReferrals />} />
+                <Route path="reports" element={<AdminReports />} />
+                <Route path="settings" element={<AdminSettings />} />
+                <Route path="audit-logs" element={<AdminAuditLogs />} />
+                <Route path="applications" element={<AdminApplications />} />
+              </Route>
 
-          {/* ── Student / Alumni (shared layout) ── */}
-          <Route element={
-            <ProtectedRoute>
-              <AppLayout />
-            </ProtectedRoute>
-          }>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/opportunities" element={<Opportunities />} />
-            <Route path="/referrals" element={<Referrals />} />
-            <Route path="/interviews" element={<InterviewExperiences />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/create-opportunity" element={
-              <ProtectedRoute allowedRoles={["alumni", "admin"]}>
-                <CreateOpportunity />
-              </ProtectedRoute>
-            } />
-          </Route>
+              <Route path="/verify-alumni" element={<Navigate to="/admin/verify-alumni" replace />} />
 
-          {/* ── Catch-all ── */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-<<<<<<< HEAD
+              {/* User */}
+              <Route element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/opportunities" element={<Opportunities />} />
+                <Route path="/referrals" element={<Referrals />} />
+                <Route path="/interviews" element={<InterviewExperiences />} />
+                <Route path="/community" element={<Community />} />
+                <Route path="/create-opportunity" element={
+                  <ProtectedRoute allowedRoles={["alumni", "admin"]}>
+                    <CreateOpportunity />
+                  </ProtectedRoute>
+                } />
+              </Route>
+
+              <Route path="*" element={<Navigate to="/" replace />} />
+
             </Routes>
           </BrowserRouter>
         </AuthProvider>
       </div>
     </div>
-=======
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
->>>>>>> 13c4e9c02bbe6cdf54d9b40eab0a14efa9a005a1
   );
 }
